@@ -1,0 +1,5 @@
+{
+  "name": "Copy of Cinematic Prompt Generator",
+  "description": "Generate hyper-realistic cinematic prompts for AI image generation by selecting style, camera, lens, lighting, and post-production settings, and then providing a scene description.",
+  "requestFramePermissions": []
+}

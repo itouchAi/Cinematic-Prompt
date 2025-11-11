@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinematic Prompt Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      // Apply theme from localStorage before page load to prevent FOUC
+      try {
+        const theme = localStorage.getItem('theme') || 'indigo';
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) { /* ignore */ }
+    </script>
+    <style>
+      :root, [data-theme="indigo"] {
+        /* Accent */
+        --color-primary-50: 238 242 255; --color-primary-100: 224 231 255; --color-primary-200: 199 210 254; --color-primary-300: 165 180 252;
+        --color-primary-400: 129 140 248; --color-primary-500: 99 102 241; --color-primary-600: 79 70 229; --color-primary-700: 67 56 202;
+        --color-primary-800: 55 48 163; --color-primary-900: 49 46 129; --color-primary-950: 30 27 75;
+        /* Theme */
+        --color-bg-gradient-from: 17 24 39; /* gray-900 */
+        --color-bg-gradient-to: 0 0 0; /* black */
+        --color-bg-panel: 31 41 55; /* gray-800 */
+        --color-bg-secondary: 49 46 129; /* indigo-900 */
+        --color-text-primary: 229 231 235; /* gray-200 */
+        --color-text-secondary: 156 163 175; /* gray-400 */
+        --color-border: 55 65 81; /* gray-700 */
+      }
+      [data-theme="rose"] {
+        /* Accent */
+        --color-primary-50: 255 241 242; --color-primary-100: 255 228 230; --color-primary-200: 254 205 211; --color-primary-300: 253 164 175;
+        --color-primary-400: 251 113 133; --color-primary-500: 244 63 94; --color-primary-600: 225 29 72; --color-primary-700: 190 18 60;
+        --color-primary-800: 159 18 57; --color-primary-900: 136 19 55; --color-primary-950: 76 5 25;
+        /* Theme */
+        --color-bg-gradient-from: 255 241 242; /* rose-50 */
+        --color-bg-gradient-to: 255 241 242; /* rose-50 */
+        --color-bg-panel: 255 255 255; /* white */
+        --color-bg-secondary: 255 255 255; /* white */
+        --color-text-primary: 136 19 55; /* rose-900 */
+        --color-text-secondary: 190 18 60; /* rose-700 */
+        --color-border: 254 205 211; /* rose-200 */
+      }
+      [data-theme="teal"] {
+        /* Accent */
+        --color-primary-50: 240 253 250; --color-primary-100: 204 251 241; --color-primary-200: 167 243 208; --color-primary-300: 110 231 183;
+        --color-primary-400: 52 211 153; --color-primary-500: 16 185 129; --color-primary-600: 5 150 105; --color-primary-700: 4 120 87;
+        --color-primary-800: 6 95 70; --color-primary-900: 6 78 59; --color-primary-950: 2 44 34;
+        /* Theme */
+        --color-bg-gradient-from: 240 253 250; /* teal-50 */
+        --color-bg-gradient-to: 240 253 250; /* teal-50 */
+        --color-bg-panel: 255 255 255; /* white */
+        --color-bg-secondary: 255 255 255; /* white */
+        --color-text-primary: 6 78 59; /* teal-900 */
+        --color-text-secondary: 4 120 87; /* teal-700 */
+        --color-border: 167 243 208; /* teal-200 */
+      }
+      [data-theme="amber"] {
+        /* Accent */
+        --color-primary-50: 255 251 235; --color-primary-100: 254 243 199; --color-primary-200: 253 230 138; --color-primary-300: 252 211 77;
+        --color-primary-400: 251 191 36; --color-primary-500: 245 158 11; --color-primary-600: 217 119 6; --color-primary-700: 180 83 9;
+        --color-primary-800: 146 64 14; --color-primary-900: 120 53 15; --color-primary-950: 69 28 8;
+        /* Theme */
+        --color-bg-gradient-from: 28 25 23; /* stone-900 */
+        --color-bg-gradient-to: 69 28 8; /* amber-950 */
+        --color-bg-panel: 41 37 36; /* stone-800 */
+        --color-bg-secondary: 120 53 15; /* amber-900 */
+        --color-text-primary: 253 230 138; /* amber-200 */
+        --color-text-secondary: 251 191 36; /* amber-400 */
+        --color-border: 120 53 15; /* amber-900 */
+      }
+      [data-theme="violet"] {
+        /* Accent */
+        --color-primary-50: 245 243 255; --color-primary-100: 237 233 254; --color-primary-200: 221 214 254; --color-primary-300: 196 181 253;
+        --color-primary-400: 167 139 250; --color-primary-500: 139 92 246; --color-primary-600: 124 58 237; --color-primary-700: 109 40 217;
+        --color-primary-800: 91 33 182; --color-primary-900: 76 29 149; --color-primary-950: 46 16 101;
+        /* Theme */
+        --color-bg-gradient-from: 23 21 34; /* custom dark violet */
+        --color-bg-gradient-to: 46 16 101; /* violet-950 */
+        --color-bg-panel: 46 16 101; /* violet-950 */
+        --color-bg-secondary: 76 29 149; /* violet-900 */
+        --color-text-primary: 221 214 254; /* violet-200 */
+        --color-text-secondary: 167 139 250; /* violet-400 */
+        --color-border: 91 33 182; /* violet-800 */
+      }
+      body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background-color: rgb(var(--color-bg-gradient-to)); /* Fallback */
+        color: rgb(var(--color-text-primary));
+      }
+      @keyframes fade-in {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fade-in {
+        animation: fade-in 0.5s ease-out forwards;
+      }
+      /* 3D Flip Card Utilities */
+      .perspective { perspective: 1000px; }
+      .preserve-3d { transform-style: preserve-3d; }
+      .backface-hidden { backface-visibility: hidden; }
+      .rotate-y-180 { transform: rotateY(180deg); }
+      .group:hover .group-hover\:rotate-y-180 { transform: rotateY(180deg); }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.29.0"
+  }
+}
+</script>
+</head>
+<body class="font-sans transition-colors duration-300">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>
