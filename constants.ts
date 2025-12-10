@@ -3,6 +3,13 @@ import { PublishedImage } from "./context/AuthContext";
 export interface Option {
   value: string;
   label: string;
+  isHeader?: boolean;
+}
+
+export interface CameraSettingConfig {
+  id: string;
+  label: string;
+  options: string[];
 }
 
 export const styles: Option[] = [
@@ -74,6 +81,213 @@ export const postProduction: Option[] = [
   { value: 'Motion Blur Enhancement', label: 'Motion Blur Enhancement' },
   { value: 'Depth of Field Enhancement', label: 'Depth of Field Enhancement' },
   { value: 'Noise Reduction', label: 'Noise Reduction' },
+];
+
+export const cameraAngles: Option[] = [
+  { value: '', label: 'None' },
+  { value: 'Eye-Level Angle', label: 'Eye-Level Angle' },
+  { value: 'High Angle', label: 'High Angle' },
+  { value: 'Low Angle', label: 'Low Angle' },
+  { value: 'Bird’s Eye View', label: 'Bird’s Eye View' },
+  { value: 'Worm’s Eye View', label: 'Worm’s Eye View' },
+  { value: 'Dutch Angle', label: 'Dutch Angle' },
+  { value: 'Close-Up', label: 'Close-Up' },
+  { value: 'Extreme Close-Up', label: 'Extreme Close-Up' },
+  { value: 'Medium Shot', label: 'Medium Shot' },
+  { value: 'Full Shot', label: 'Full Shot' },
+  { value: 'Cowboy Shot', label: 'Cowboy Shot' },
+  { value: 'Wide Shot', label: 'Wide Shot' },
+  { value: 'Extreme Wide Shot', label: 'Extreme Wide Shot' },
+  { value: 'POV Shot', label: 'POV Shot' },
+  { value: 'Over-The-Shoulder Shot', label: 'Over-The-Shoulder Shot' },
+  { value: 'Profile Shot', label: 'Profile Shot' },
+  { value: 'Three-Quarter Angle', label: 'Three-Quarter Angle' },
+  { value: 'Back Shot', label: 'Back Shot' },
+  { value: 'Reverse Angle', label: 'Reverse Angle' },
+  { value: 'Aerial Shot', label: 'Aerial Shot' },
+];
+
+export const cameraSettingsConfig: CameraSettingConfig[] = [
+  {
+    id: 'aperture',
+    label: 'Aperture Priority (A / Av)',
+    options: ['f/1.2', 'f/1.4', 'f/1.8', 'f/2.0', 'f/2.8', 'f/4', 'f/5.6', 'f/8', 'f/11', 'f/16', 'f/22']
+  },
+  {
+    id: 'exposure',
+    label: 'Exposure Compensation',
+    options: ['−3EV', '−2EV', '−1EV', '0EV', '+1EV', '+2EV', '+3EV']
+  },
+  {
+    id: 'shutter',
+    label: 'Shutter Speed',
+    options: ['1/30', '1/60', '1/125', '1/250', '1/500', '1/1000', '1/2000', '1/4000', '1/8000']
+  },
+  {
+    id: 'iso',
+    label: 'ISO',
+    options: ['100', '200', '400', '800', '1600', '3200', '6400']
+  },
+  {
+    id: 'noise',
+    label: 'Noise Reduction',
+    options: ['0.0', '0.1', '0.2', '0.3', '0.4', '0.5', '0.6', '0.7', '0.8', '0.9', '1.0']
+  },
+  {
+    id: 'log',
+    label: 'Log Mode',
+    options: ['C-Log', 'C-Log2', 'S-Log2', 'S-Log3', 'V-Log', 'N-Log']
+  },
+  {
+    id: 'dynamicRange',
+    label: 'Dynamic Range',
+    options: ['10', '11', '12', '13', '14', '15']
+  },
+  {
+    id: 'bitDepthLog',
+    label: 'Bit Depth (Log)',
+    options: ['8-bit', '10-bit', '12-bit']
+  },
+  {
+    id: 'colorSpace',
+    label: 'Color Space',
+    options: ['Rec.709', 'Rec.2020', 'DCI-P3']
+  },
+  {
+    id: 'rawType',
+    label: 'RAW Type',
+    options: ['Compressed RAW', 'Lossless RAW', 'Uncompressed RAW']
+  },
+  {
+    id: 'bitDepthRaw',
+    label: 'Bit Depth (RAW)',
+    options: ['12-bit', '14-bit', '16-bit']
+  },
+  {
+    id: 'peakingColor',
+    label: 'Peaking Color',
+    options: ['Red', 'Blue', 'Yellow', 'White']
+  },
+  {
+    id: 'peakingIntensity',
+    label: 'Peaking Intensity',
+    options: ['Low', 'Medium', 'High']
+  },
+  {
+    id: 'syncSpeed',
+    label: 'Sync Speed',
+    options: ['1/200', '1/250', '1/320', '1/400', '1/500', '1/640', '1/800', '1/1000', '1/1250', '1/1600', '1/2000', '1/2500', '1/3200', '1/4000', '1/5000', '1/6400', '1/8000']
+  },
+  {
+    id: 'flashPower',
+    label: 'Flash Power',
+    options: ['1/1', '1/2', '1/4', '1/8', '1/16']
+  },
+  {
+    id: 'whiteBalance',
+    label: 'White Balance Preset Mode',
+    options: [
+      'Daylight – 5500K', 'Cloudy – 6000K', 'Shade – 7000K', 'Tungsten – 3200K', 'Fluorescent – 4000K',
+      '2500', '2600', '2700', '2800', '2900', '3000', '3200', '3400', '3600', '3800', '4000', '4200',
+      '4400', '4600', '4800', '5000', '5200', '5400', '5600', '5800', '6000', '6200', '6400', '6600',
+      '6800', '7000', '7200', '7400', '7600', '7800', '8000'
+    ]
+  }
+];
+
+export const effects: Option[] = [
+  { value: '', label: 'None' },
+  // Optical Effects
+  { value: 'header_optical', label: '✨ Optical Effects', isHeader: true },
+  { value: 'Optical Effect: Bokeh', label: 'Bokeh' },
+  { value: 'Optical Effect: Lens Flare', label: 'Lens Flare' },
+  { value: 'Optical Effect: Chromatic Aberration', label: 'Chromatic Aberration' },
+  { value: 'Optical Effect: Glare', label: 'Glare' },
+  { value: 'Optical Effect: Bloom', label: 'Bloom' },
+  { value: 'Optical Effect: Vignetting', label: 'Vignetting' },
+  { value: 'Optical Effect: Soft Focus', label: 'Soft Focus' },
+  { value: 'Optical Effect: Film Halation', label: 'Film Halation' },
+  { value: 'Optical Effect: Barrel Distortion', label: 'Barrel Distortion' },
+  { value: 'Optical Effect: Pincushion Distortion', label: 'Pincushion Distortion' },
+
+  // Film / Analog Effects
+  { value: 'header_film', label: '🎞️ Film / Analog Effects', isHeader: true },
+  { value: 'Film Effect: Film Grain', label: 'Film Grain' },
+  { value: 'Film Effect: Dust and Scratches', label: 'Dust and Scratches' },
+  { value: 'Film Effect: Retro Color Fade', label: 'Retro Color Fade' },
+  { value: 'Film Effect: Film Burn', label: 'Film Burn' },
+  { value: 'Film Effect: Kodak Color Profile', label: 'Kodak Color Profile' },
+  { value: 'Film Effect: Fuji Color Profile', label: 'Fuji Color Profile' },
+  { value: 'Film Effect: Cinematic LUT', label: 'Cinematic LUT' },
+  { value: 'Film Effect: Warm Matte Look', label: 'Warm Matte Look' },
+  { value: 'Film Effect: Moody Film Tone', label: 'Moody Film Tone' },
+
+  // Atmospheric Effects
+  { value: 'header_atmos', label: '🌬️ Atmospheric Effects', isHeader: true },
+  { value: 'Atmospheric Effect: Fog', label: 'Fog' },
+  { value: 'Atmospheric Effect: Mist', label: 'Mist' },
+  { value: 'Atmospheric Effect: Haze', label: 'Haze' },
+  { value: 'Atmospheric Effect: Smoke', label: 'Smoke' },
+  { value: 'Atmospheric Effect: Rain', label: 'Rain' },
+  { value: 'Atmospheric Effect: Snow', label: 'Snow' },
+  { value: 'Atmospheric Effect: Dust Particles', label: 'Dust Particles' },
+  { value: 'Atmospheric Effect: Light Rays', label: 'Light Rays' },
+  { value: 'Atmospheric Effect: God Rays', label: 'God Rays' },
+  { value: 'Atmospheric Effect: Backlight Glow', label: 'Backlight Glow' },
+
+  // Lighting & Shadow Effects
+  { value: 'header_light', label: '💡 Lighting & Shadow Effects', isHeader: true },
+  { value: 'Lighting Effect: Hard Shadows', label: 'Hard Shadows' },
+  { value: 'Lighting Effect: Soft Shadows', label: 'Soft Shadows' },
+  { value: 'Lighting Effect: Rim Light', label: 'Rim Light' },
+  { value: 'Lighting Effect: Split Lighting', label: 'Split Lighting' },
+  { value: 'Lighting Effect: Loop Lighting', label: 'Loop Lighting' },
+  { value: 'Lighting Effect: Rembrandt Lighting', label: 'Rembrandt Lighting' },
+  { value: 'Lighting Effect: Edge Light', label: 'Edge Light' },
+  { value: 'Lighting Effect: Backlight Highlighting', label: 'Backlight Highlighting' },
+  { value: 'Lighting Effect: Directional Lighting', label: 'Directional Lighting' },
+
+  // Reflection & Glass Effects
+  { value: 'header_reflect', label: '🪞 Reflection & Glass Effects', isHeader: true },
+  { value: 'Reflection Effect: Glass Reflection', label: 'Glass Reflection' },
+  { value: 'Reflection Effect: Double Reflection', label: 'Double Reflection' },
+  { value: 'Reflection Effect: Prism Rainbow Effect', label: 'Prism Rainbow Effect' },
+  { value: 'Reflection Effect: Mirror Reflection', label: 'Mirror Reflection' },
+  { value: 'Reflection Effect: Wet Surface Reflection', label: 'Wet Surface Reflection' },
+  { value: 'Reflection Effect: Metal Surface Reflection', label: 'Metal Surface Reflection' },
+
+  // Digital & Stylized Effects
+  { value: 'header_digital', label: '💻 Digital & Stylized Effects', isHeader: true },
+  { value: 'Digital Effect: HDR Rendering', label: 'HDR Rendering' },
+  { value: 'Digital Effect: High Contrast Punch', label: 'High Contrast Punch' },
+  { value: 'Digital Effect: Glow Highlights', label: 'Glow Highlights' },
+  { value: 'Digital Effect: Neon Glare', label: 'Neon Glare' },
+  { value: 'Digital Effect: Cyberpunk Glow', label: 'Cyberpunk Glow' },
+  { value: 'Digital Effect: Depth Blur', label: 'Depth Blur' },
+  { value: 'Digital Effect: AI Halation', label: 'AI Halation' },
+  { value: 'Digital Effect: Oversharp Digital Look', label: 'Oversharp Digital Look' },
+
+  // Motion & Dynamic Effects
+  { value: 'header_motion', label: '🌀 Motion & Dynamic Effects', isHeader: true },
+  { value: 'Motion Effect: Motion Blur', label: 'Motion Blur' },
+  { value: 'Motion Effect: Long Exposure Light Trails', label: 'Long Exposure Light Trails' },
+  { value: 'Motion Effect: Action Freeze', label: 'Action Freeze' },
+  { value: 'Motion Effect: Zoom Burst Effect', label: 'Zoom Burst Effect' },
+  { value: 'Motion Effect: Panning Motion Blur', label: 'Panning Motion Blur' },
+  { value: 'Motion Effect: Dynamic Camera Shake', label: 'Dynamic Camera Shake' },
+  { value: 'Motion Effect: Speed Lines', label: 'Speed Lines' },
+];
+
+export const aspectRatios: Option[] = [
+  { value: '1:1', label: 'Square (1:1)' },
+  { value: '16:9', label: 'Cinematic (16:9)' },
+  { value: '9:16', label: 'Portrait (9:16)' },
+];
+
+export const imageCounts: Option[] = [
+  { value: '1', label: '1' },
+  { value: '2', label: '2' },
+  { value: '4', label: '4' },
 ];
 
 export const subjects: Option[] = [
@@ -181,6 +395,9 @@ export interface Example {
   lens: string;
   light: string;
   postProd: string;
+  cameraAngle?: string;
+  cameraMode?: string;
+  effect?: string;
 }
 
 export const examples: Example[] = [
@@ -192,6 +409,9 @@ export const examples: Example[] = [
     lens: 'Canon CN-E 24mm',
     light: 'Neon Light',
     postProd: 'Company 3 Color Grading',
+    cameraAngle: 'Low Angle',
+    cameraMode: 'Aperture Priority: f/1.4',
+    effect: 'Digital Effect: Neon Glare',
   },
   {
     title: 'Enchanted Forest',
@@ -201,6 +421,9 @@ export const examples: Example[] = [
     lens: 'Cooke S4/i 50mm',
     light: 'Volumetric Light',
     postProd: 'LUT Cinematic Look',
+    cameraAngle: 'Eye-Level Angle',
+    cameraMode: 'Shutter Priority: 1/60',
+    effect: 'Atmospheric Effect: God Rays',
   },
   {
     title: 'Historical Portrait',
@@ -210,6 +433,9 @@ export const examples: Example[] = [
     lens: 'Zeiss Master Prime 50mm',
     light: 'Soft Fill Light',
     postProd: 'FilmConvert Film Emulation',
+    cameraAngle: 'Medium Shot',
+    cameraMode: 'ISO Priority: 100',
+    effect: 'Optical Effect: Soft Focus',
   },
    {
     title: 'Desert Wanderer',
@@ -219,6 +445,9 @@ export const examples: Example[] = [
     lens: 'Panavision Primo 50mm',
     light: 'Golden Hour Sunlight',
     postProd: 'DaVinci Resolve Color Grade',
+    cameraAngle: 'Extreme Wide Shot',
+    cameraMode: 'Full Auto Exposure: ISO 100–800',
+    effect: 'Atmospheric Effect: Haze',
   },
   {
     title: "Noir Detective's Office",
@@ -228,6 +457,9 @@ export const examples: Example[] = [
     lens: 'Leica Summilux-C 50mm',
     light: 'Cinematic Spotlight',
     postProd: 'FilmConvert Film Emulation',
+    cameraAngle: 'Dutch Angle',
+    cameraMode: 'Log Mode: S-Log3',
+    effect: 'Film Effect: Film Grain',
   },
 ];
 

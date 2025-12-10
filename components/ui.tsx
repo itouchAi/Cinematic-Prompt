@@ -3,6 +3,41 @@ import type { Option } from '../constants';
 
 // --- ICONS ---
 
+export const BroomIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="m9.568 4.138 2.322-2.322a1.875 1.875 0 0 1 2.652 2.652L12.22 6.888m-2.652-2.75 2.652 2.75m-4.5 1.5 5.25-5.25m-5.25 5.25L3 18.75m3.75-3.75h.008v.008H6.75v-.008Zm0 0L8.25 13.5m-1.5 1.5-1.5 1.5m1.5-1.5L6 15m.75-1.5 1.5 1.5m-1.5-1.5L8.25 15m0 0 1.5 1.5M6 18.75h1.5" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 11.25 15 15m-3.75 0L15 11.25m-3.75 3.75.75.75h.008v.008h-.008v-.008Zm0 0L12 15.75m-1.5.75.75-.75m-2.25 2.25.75-.75" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12.75 21H18a2.25 2.25 0 0 0 2.25-2.25v-1.5M12.75 21a2.25 2.25 0 0 1-2.25-2.25v-1.5m2.25 3.75V15m0-3.75V9.382c0-.521-.21-1.02-.586-1.396L9.414 5.736A2.25 2.25 0 0 0 7.828 5.25H6.75" />
+    </svg>
+);
+
+export const DiceIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15.5 8.5a.5.5 0 11-1 0 .5.5 0 011 0z" fill="currentColor" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M8.5 15.5a.5.5 0 11-1 0 .5.5 0 011 0z" fill="currentColor" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12.5 15.5a.5.5 0 11-1 0 .5.5 0 011 0z" fill="currentColor" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M8.5 11.5a.5.5 0 11-1 0 .5.5 0 011 0z" fill="currentColor" />
+        <rect x="11" y="5" width="8" height="8" rx="1.5" strokeWidth="1.5" />
+        <rect x="4" y="12" width="8" height="8" rx="1.5" strokeWidth="1.5" />
+    </svg>
+);
+
+export const KeyboardIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 4.5h16.5a1.5 1.5 0 0 1 1.5 1.5v12a1.5 1.5 0 0 1-1.5 1.5H3.75a1.5 1.5 0 0 1-1.5-1.5V6a1.5 1.5 0 0 1 1.5-1.5Z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 9h.008v.008H7.5V9Zm3.75 0h.008v.008h-.008V9Zm3.75 0h.008v.008h-.008V9Zm-7.5 3.75h.008v.008H7.5v-.008Zm3.75 0h.008v.008h-.008v-.008Zm3.75 0h.008v.008h-.008v-.008Zm-7.5 3.75h.008v.008H7.5V16.5Zm3.75 0h7.5" />
+    </svg>
+);
+
+export const PaletteIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-10.5a2.25 2.25 0 0 1 3.182 0l2.121 2.121a2.25 2.25 0 0 1 0 3.182L8.995 21.005a3 3 0 0 1-4.242 0L3.75 19.995a3 3 0 0 1 0-4.242Z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" fill="#ef4444" strokeWidth={0} />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 9a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" fill="#3b82f6" strokeWidth={0} />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 12a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" fill="#facc15" strokeWidth={0} />
+    </svg>
+);
+
 export const HeartIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
@@ -191,6 +226,12 @@ export const SpinnerIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
     </svg>
 );
 
+export const PhotoIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+    </svg>
+);
+
 
 // --- SELECTOR COMPONENT ---
 
@@ -241,8 +282,12 @@ export const Selector: React.FC<SelectorProps> = ({ label, options, selected, on
           {options.map((option) => (
             <li
               key={option.value}
-              onClick={() => handleSelect(option.value)}
-              className="text-[rgb(var(--color-text-primary))] cursor-pointer select-none relative py-2 pl-3 pr-9 hover:bg-[rgb(var(--color-primary-500))] hover:text-white"
+              onClick={() => !option.isHeader && handleSelect(option.value)}
+              className={`relative py-2 pl-3 pr-9 select-none ${
+                option.isHeader
+                  ? 'font-bold text-[rgb(var(--color-primary-400))] cursor-default border-b border-[rgba(var(--color-border),0.5)] mt-1 mb-1 first:mt-0'
+                  : 'text-[rgb(var(--color-text-primary))] cursor-pointer hover:bg-[rgb(var(--color-primary-500))] hover:text-white'
+              }`}
             >
               <span className={`block truncate ${selected === option.value ? 'font-semibold' : 'font-normal'}`}>
                 {option.label}

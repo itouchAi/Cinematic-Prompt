@@ -22,6 +22,10 @@ export interface HistoryItem {
   lens: string;
   light: string;
   postProd: string;
+  cameraAngle?: string;
+  cameraSettings?: Record<string, string>; // Stores individual dropdown values
+  cameraMode?: string; // Kept for legacy compatibility
+  effect?: string;
 }
 
 export interface ImageHistoryItem {

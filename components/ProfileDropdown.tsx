@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useContext } from 'react';
+import React, { useState, useContext, useRef } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { useTranslation } from '../context/LanguageContext';
 import { ClockIcon, UserIcon, HeartIcon, SparklesIcon } from './ui';
@@ -7,24 +7,33 @@ const ProfileDropdown: React.FC = () => {
   const { currentUser, logout, setAppView } = useContext(AuthContext);
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const timeoutRef = useRef<number | null>(null);
 
-  useEffect(() => {
-    const handleOutsideClick = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', handleOutsideClick);
-    return () => document.removeEventListener('mousedown', handleOutsideClick);
-  }, []);
+  const handleMouseEnter = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
+    setIsOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = window.setTimeout(() => {
+      setIsOpen(false);
+    }, 200);
+  };
 
   if (!currentUser) return null;
 
   return (
-    <div ref={dropdownRef} className="relative">
+    <div
+      className="relative"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        aria-haspopup="true"
+        aria-expanded={isOpen}
         className="flex items-center gap-2 text-sm text-[rgb(var(--color-text-secondary))] hover:text-[rgb(var(--color-text-primary))] transition-colors"
       >
         <UserIcon className="w-6 h-6 p-1 rounded-full bg-[rgba(var(--color-bg-secondary),0.5)]" />
@@ -32,7 +41,7 @@ const ProfileDropdown: React.FC = () => {
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 p-2 w-48 bg-[rgb(var(--color-bg-panel))] rounded-md shadow-lg ring-1 ring-black ring-opacity-5 z-20">
+        <div className="absolute right-0 top-full mt-1 p-2 w-48 bg-[rgb(var(--color-bg-panel))] rounded-md shadow-lg ring-1 ring-black ring-opacity-5 z-20">
           <div className="px-2 py-2">
              <p className="text-sm font-semibold text-[rgb(var(--color-text-primary))] truncate">{currentUser.firstName} {currentUser.lastName}</p>
              <p className="text-xs text-[rgb(var(--color-text-secondary))] truncate">{currentUser.email}</p>

@@ -8,7 +8,7 @@
     <script>
       // Apply theme from localStorage before page load to prevent FOUC
       try {
-        const theme = localStorage.getItem('theme') || 'indigo';
+        const theme = localStorage.getItem('theme') || 'aurora';
         document.documentElement.setAttribute('data-theme', theme);
       } catch (e) { /* ignore */ }
     </script>
@@ -83,6 +83,20 @@
         --color-text-secondary: 167 139 250; /* violet-400 */
         --color-border: 91 33 182; /* violet-800 */
       }
+      [data-theme="aurora"] {
+        /* Accent */
+        --color-primary-50: 236 254 255; --color-primary-100: 207 250 254; --color-primary-200: 165 243 252; --color-primary-300: 103 232 249;
+        --color-primary-400: 34 211 238; --color-primary-500: 6 182 212; --color-primary-600: 8 145 178; --color-primary-700: 14 116 144;
+        --color-primary-800: 21 94 117; --color-primary-900: 22 78 99; --color-primary-950: 8 51 68;
+        /* Theme */
+        --color-bg-gradient-from: 13 17 32; /* custom dark blue */
+        --color-bg-gradient-to: 29 17 43; /* custom deep purple */
+        --color-bg-panel: 29 17 43; /* custom deep purple */
+        --color-bg-secondary: 22 78 99; /* cyan-900 */
+        --color-text-primary: 224 231 255; /* indigo-100 */
+        --color-text-secondary: 165 180 252; /* indigo-300 */
+        --color-border: 21 94 117; /* cyan-800 */
+      }
       body {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
@@ -102,6 +116,46 @@
       .backface-hidden { backface-visibility: hidden; }
       .rotate-y-180 { transform: rotateY(180deg); }
       .group:hover .group-hover\:rotate-y-180 { transform: rotateY(180deg); }
+
+      /* Button Animations */
+      @keyframes sweep-away {
+        0% { transform: translateX(0) rotate(0); opacity: 1; }
+        100% { transform: translateX(20px) rotate(45deg); opacity: 0; }
+      }
+      .animate-sweep-away { animation: sweep-away 0.4s ease-in-out forwards; }
+      
+      @keyframes shake {
+        0%, 100% { transform: rotate(0deg); }
+        25% { transform: rotate(-5deg); }
+        75% { transform: rotate(5deg); }
+      }
+      .animate-shake { animation: shake 0.5s ease-in-out; }
+
+      @keyframes roll-away {
+        0% { transform: rotate(0) scale(1); opacity: 1; }
+        100% { transform: rotate(360deg) scale(0); opacity: 0; }
+      }
+      .animate-roll-away { animation: roll-away 0.5s ease-in-out forwards; }
+
+      @keyframes fly-and-fade {
+        0% { opacity: 1; transform: translate(0, 0) scale(1); }
+        100% { opacity: 0; transform: translate(var(--tx, 0), var(--ty, 0)) scale(0.5); }
+      }
+      .animate-fly-and-fade { animation: fly-and-fade 0.5s ease-out forwards; }
+
+      @keyframes key-press {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(2px); }
+      }
+      .animate-key-press { animation: key-press 0.1s ease-in-out; }
+
+      @keyframes mix-colors {
+        0% { transform: scale(1) rotate(0deg); }
+        50% { transform: scale(1.1) rotate(5deg); }
+        100% { transform: scale(1) rotate(0deg); opacity: 0; }
+      }
+      .animate-mix-colors { animation: mix-colors 0.5s ease-in-out forwards; }
+
     </style>
 <script type="importmap">
 {
